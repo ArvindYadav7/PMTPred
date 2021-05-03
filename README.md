@@ -1,4 +1,4 @@
-#PMTPred
+# PMTPred
 PMTPred is a freely available standalone software package, which operates depending on the Python environment (Python Version 3.0 or above). It allows users to flexible use by providing protein sequence as an input for the prediction of protein methyltransfearses (PMTs). 
 # Dependency
 Before running PMTPred, user should make sure all the following packages are installed in their python environment. 
