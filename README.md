@@ -7,8 +7,7 @@ Before running PMTPred, user should make sure all the following packages are ins
 3. Pickle
 4. Sklearn
 # Installation
-1.	Download PMTPred by
-git clone https://github.com/ArvindYadav7/PMTPred 
+1.	Download PMTPred by git clone https://github.com/ArvindYadav7/PMTPred 
 
 2.	Unzip the download folder PMTPred-main
 3.	Run the script PMTPred.py available in folder 
