@@ -1,10 +1,53 @@
-#jayShreeRam
-#PMTPred
+#############################################################################
+#Written by Arvind K Yadav                                                  #
+#PMTPred is developed for the prediction of protein methyltransefarses      #
+#Please cite PMTPred                                                        #
+#For details refer: https://github.com/ArvindYadav7/PMTPred                 #
+#############################################################################
 
-file_name = "InputSequences.fasta"
+import pandas as pd
+import numpy as np
+import warnings
+import argparse
+import pickle
+import shutil
+import csv
+import os
+from argparse import RawTextHelpFormatter
+warnings.filterwarnings('ignore')
+
+if __name__ == "__main__":
+    print("""
+         **************************************************************************
+              *   _____    __  __   _______   _____                      _   *
+              *  |  __ \  |  \/  | |__   __| |  __ \                    | |  *
+              *  | |__) | | \  / |    | |    | |__) |  _ __    ___    __| |  *
+              *  |  ___/  | |\/| |    | |    |  ___/  | '__|  / _ \  / _` |  *
+              *  | |      | |  | |    | |    | |      | |    |  __/ | (_| |  *
+              *  |_|      |_|  |_|    |_|    |_|      |_|     \___|  \__,_|  *
+              *                                                              *
+              *      PMTPred: Protein Methyltransferases Prediction Tool     *
+         **************************************************************************
+                          @ https://github.com/ArvindYadav7/PMTPred 
+                """)
+
+print(" ")
+parser = argparse.ArgumentParser(description='Please provide following arguments to proceed',formatter_class=RawTextHelpFormatter) 
+
+#######################Read Arguments from command ###################################
+
+parser.add_argument("-i", "--input", type=str, required=True, help="Input File Name: protein sequence file in FASTA format")
+
+# Parameter initialization or assigning variable for command level arguments
+args = parser.parse_args()
+file_name = args.input
+
+print("Loading...\n")
 
 #threshold
 t = 0.50
+
+########################## Result Display ###########################################
 
 def display_result(ids,svm_probs):
     
@@ -21,11 +64,10 @@ def display_result(ids,svm_probs):
             output_file.write(line)
 
     output_file.close()
-    
+
+############################## Result Prediction #######################################
+
 def predict_CKSAAP():
-    import pandas as pd
-    import pickle
-    import numpy as np
    
     test=pd.read_csv("CKSAAP.csv").fillna(0)
     ids=test['#']
@@ -38,9 +80,11 @@ def predict_CKSAAP():
     display_result(ids,svm_probs)
     return 
 
+############################# Input file Preparation #############################
+
 def prepare_input_file():
+    
     string=""
-    import csv
     fh=csv.reader(open("CKSAAP.tsv"),delimiter="\t")
     fh2=open("CKSAAP.csv","w+")
         
@@ -58,9 +102,10 @@ def prepare_input_file():
     predict_CKSAAP()
     return
 
+############################ Feature Extraction ###############################################
+
 def extractfeature(filename):
-    import os
-    import shutil
+
     path, fn = os.path.split(filename)
     loc=os.getcwd()
     loc=str(loc)
@@ -69,7 +114,6 @@ def extractfeature(filename):
     locforifeature=loc+"/iFeature/iFeature.py"
     shutil.copy(filename,locforcopy)
 
-
     command="python "+locforifeature+" --file "+locforcopy+"/"+str(fn)+" --type CKSAAP --out CKSAAP.tsv"
     os.system(command)
     prepare_input_file()
@@ -77,3 +121,6 @@ def extractfeature(filename):
 
 #call the extract feature function
 extractfeature(file_name)
+
+
+############################ END #########################
