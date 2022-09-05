@@ -2,7 +2,7 @@
 #Written by Arvind K Yadav                                                  #
 #PMTPred is developed for the prediction of protein methyltransefarses      #
 #Please cite PMTPred                                                        #
-#For details refer: https://github.com/ArvindYadav7/PMTPred                 #
+#For details please refer: https://github.com/ArvindYadav7/PMTPred          #
 #############################################################################
 
 import pandas as pd
