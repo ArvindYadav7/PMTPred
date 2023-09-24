@@ -62,7 +62,7 @@ An **`Output.csv`** file will be generated containg all your outputs.
 
 **Output File:** Program will save result in CSV format as Output.csv in your working directory.
 
-**Datasets:** All datasets used in this study can be downloaded from: http://bioinfoindia.org/PMTPred/ 
+<!-- **Datasets:** All datasets used in this study can be downloaded from: http://bioinfoindia.org/PMTPred/ --> 
 
 # Contact address
 In case of any query please contact
